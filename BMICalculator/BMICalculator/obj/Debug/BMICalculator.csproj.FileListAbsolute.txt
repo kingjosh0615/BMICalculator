@@ -1,0 +1,15 @@
+C:\Users\WILES_JOSHUA\source\repos\BMICalculator\BMICalculator\BMICalculator\bin\Debug\BMICalculator.exe.config
+C:\Users\WILES_JOSHUA\source\repos\BMICalculator\BMICalculator\BMICalculator\bin\Debug\BMICalculator.exe
+C:\Users\WILES_JOSHUA\source\repos\BMICalculator\BMICalculator\BMICalculator\bin\Debug\BMICalculator.pdb
+C:\Users\WILES_JOSHUA\source\repos\BMICalculator\BMICalculator\BMICalculator\obj\Debug\BMICalculator.csprojAssemblyReference.cache
+C:\Users\WILES_JOSHUA\source\repos\BMICalculator\BMICalculator\BMICalculator\obj\Debug\MainWindow.g.cs
+C:\Users\WILES_JOSHUA\source\repos\BMICalculator\BMICalculator\BMICalculator\obj\Debug\App.g.cs
+C:\Users\WILES_JOSHUA\source\repos\BMICalculator\BMICalculator\BMICalculator\obj\Debug\BMICalculator_MarkupCompile.cache
+C:\Users\WILES_JOSHUA\source\repos\BMICalculator\BMICalculator\BMICalculator\obj\Debug\BMICalculator_MarkupCompile.lref
+C:\Users\WILES_JOSHUA\source\repos\BMICalculator\BMICalculator\BMICalculator\obj\Debug\MainWindow.baml
+C:\Users\WILES_JOSHUA\source\repos\BMICalculator\BMICalculator\BMICalculator\obj\Debug\BMICalculator.g.resources
+C:\Users\WILES_JOSHUA\source\repos\BMICalculator\BMICalculator\BMICalculator\obj\Debug\BMICalculator.Properties.Resources.resources
+C:\Users\WILES_JOSHUA\source\repos\BMICalculator\BMICalculator\BMICalculator\obj\Debug\BMICalculator.csproj.GenerateResource.cache
+C:\Users\WILES_JOSHUA\source\repos\BMICalculator\BMICalculator\BMICalculator\obj\Debug\BMICalculator.csproj.CoreCompileInputs.cache
+C:\Users\WILES_JOSHUA\source\repos\BMICalculator\BMICalculator\BMICalculator\obj\Debug\BMICalculator.exe
+C:\Users\WILES_JOSHUA\source\repos\BMICalculator\BMICalculator\BMICalculator\obj\Debug\BMICalculator.pdb
