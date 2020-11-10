@@ -24,5 +24,19 @@ namespace BMICalculator
         {
             InitializeComponent();
         }
+
+        private void ClearBtn_Click(object sender, RoutedEventArgs e)
+        {
+            xFirstNameBox.Text = "";
+            xLastNameBox.Text = "";
+            xPhoneBox.Text = "";
+            xHeightInchesBox.Text = "";
+            xWeightLbsBox.Text = "";
+        }
+
+        private void ExitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Environment.Exit(0);
+        }
     }
 }
