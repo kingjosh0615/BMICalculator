@@ -53,7 +53,7 @@
 
         <!--BMI Result Labels-->
         <TextBlock x:Name="xYourBMIResults" Grid.Column="4" Grid.Row="2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="BMI Results" Grid.ColumnSpan="3" Grid.RowSpan="2" Width="414" FontWeight="Bold" FontSize="60"/>
-        <TextBlock x:Name="xBMIMessage" Grid.Column="4" Grid.Row="4" Grid.ColumnSpan="3" Grid.RowSpan="2" HorizontalAlignment="Left" Height="102" TextWrapping="Wrap" Text="Message:" VerticalAlignment="Top" Width="412" FontWeight="Bold" FontSize="16"/>
+        <TextBlock x:Name="xBMIMessage" Grid.Column="4" Grid.Row="4" Grid.ColumnSpan="3" Grid.RowSpan="2" HorizontalAlignment="Left" Height="102" TextWrapping="Wrap" Text="Message:" VerticalAlignment="Top" Width="440" FontWeight="Bold" FontSize="14"/>
 
         <!--Lower Buttons-->
         <Button x:Name="SubmitBtn" Content="Submit" Grid.Row="6" Grid.Column="1" Width="80" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" Click="SubmitBtn_Click" BorderThickness="2"/>
