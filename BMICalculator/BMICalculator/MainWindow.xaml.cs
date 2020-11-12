@@ -53,7 +53,12 @@ namespace BMICalculator
 
         private void SubmitBtn_Click(object sender, RoutedEventArgs e)
         {
+            xSubmitPopup.IsOpen = true;
+        }
 
+        private void xSubmitButtonOK_Click(object sender, RoutedEventArgs e)
+        {
+            xSubmitPopup.IsOpen = false;
         }
     }
 }
