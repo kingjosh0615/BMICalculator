@@ -53,6 +53,7 @@ namespace BMICalculator
 
         private void SubmitBtn_Click(object sender, RoutedEventArgs e)
         {
+            xSubmitPopupTextBlockOne.Text = ($"The customer's name is {xFirstNameBox} {xLastNameBox} ");
             xSubmitPopup.IsOpen = true;
         }
 

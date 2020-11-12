@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="700" Width="800">
     <Grid>
+        <!--Eight Column Definitions-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width=".5*"/>
             <ColumnDefinition Width="1*"/>
@@ -18,6 +19,7 @@
             <ColumnDefinition Width=".5*"/>
         </Grid.ColumnDefinitions>
 
+        <!--Nine Row Definitions-->
         <Grid.RowDefinitions>
             <RowDefinition Height=".5*"/>
             <RowDefinition Height="1*"/>
@@ -29,30 +31,36 @@
             <RowDefinition Height="5*"/>
             <RowDefinition Height=".5*"/>
         </Grid.RowDefinitions>
-
+        
+        <!--Labels for user input-->
         <Label Content="First Name:" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20"/>
         <Label Content="Last Name:" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20"/>
         <Label Content="Phone #:" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20"/>
         <Label Content="Height (In):" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20"/>
         <Label Content="Weight (In):" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20"/>
         <Label Content="Your BMI Is:" Grid.Row="1" Grid.Column="4" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20"/>
-
+        
+        <!--Textboxes for user input-->
         <TextBox x:Name="xFirstNameBox" Grid.Row="1" Grid.Column="2" BorderThickness="2" BorderBrush="Black" VerticalAlignment="Center" FontSize="30" TextAlignment="Left" />
         <TextBox x:Name="xLastNameBox" Grid.Row="2" Grid.Column="2" BorderThickness="2" BorderBrush="Black" VerticalAlignment="Center" FontSize="30" TextAlignment="Left"/>
         <TextBox x:Name="xPhoneBox" Grid.Row="3" Grid.Column="2" BorderThickness="2" BorderBrush="Black" VerticalAlignment="Center" FontSize="30" TextAlignment="Left"/>
         <TextBox x:Name="xHeightInchesBox" Grid.Row="4" Grid.Column="2" BorderThickness="2" BorderBrush="Black" VerticalAlignment="Center" FontSize="30" TextAlignment="Left"/>
         <TextBox x:Name="xWeightLbsBox" Grid.Row="5" Grid.Column="2" BorderThickness="2" BorderBrush="Black" VerticalAlignment="Center" FontSize="30" TextAlignment="Left"/>
 
+        <!--BMI Result Labels-->
         <TextBlock x:Name="xYourBMIResults" Grid.Column="4" Grid.Row="2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="BMI Results" Grid.ColumnSpan="3" Grid.RowSpan="2" Width="414" FontWeight="Bold" FontSize="60"/>
         <TextBlock x:Name="xBMIMessage" Grid.Column="4" Grid.Row="4" Grid.ColumnSpan="3" Grid.RowSpan="2" HorizontalAlignment="Left" Height="102" TextWrapping="Wrap" Text="Message:" VerticalAlignment="Top" Width="412" FontWeight="Bold" FontSize="16"/>
 
+        <!--Lower Buttons-->
         <Button x:Name="SubmitBtn" Content="Submit" Grid.Row="6" Grid.Column="1" Width="80" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" Click="SubmitBtn_Click" BorderThickness="2"/>
         <Button x:Name="ClearBtn" Content="Clear" Grid.Row="6" Grid.Column="2" Width="80" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" Click="ClearBtn_Click" BorderThickness="2"/>
         <Button x:Name="ImportBtn" Content="Import" Grid.Row="6" Grid.Column="4" Width="80" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" BorderThickness="2"/>
         <Button x:Name="ExitBtn" Content="Exit" Grid.Row="6" Grid.Column="6" Width="80" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" Click="ExitBtn_Click" BorderThickness="2"/>
 
+        <!--Datagrid-->
         <DataGrid x:Name="xDataGrid" AutoGenerateColumns="True" Grid.Column="1" HorizontalAlignment="Left" Height="257" Grid.Row="7" VerticalAlignment="Top" Width="722" Grid.ColumnSpan="6"/>
-
+        
+        <!--Submit Button Popup Starts Here-->
         <Popup Margin="10,10,0,13" Name="xSubmitPopup" HorizontalAlignment="Left" VerticalAlignment="Top" Width="400" Height="200" IsOpen="False" AllowsTransparency="True">
             <Grid Background="Black">
                 <Grid Background="WhiteSmoke" Margin="2 2 2 2">
@@ -70,14 +78,12 @@
                         <RowDefinition Height="4*"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    
+
                     <TextBlock Name="xSubmitPopupTextBlockOne" Text="Sans" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" />
-                    
                     <Button x:Name="xSubmitButtonOK" Content="Ok" Click="xSubmitButtonOK_Click" Grid.Column="2" Grid.Row="2" Width="120" Height="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" BorderThickness="2" FontSize="14"/>
-                    
                 </Grid>
             </Grid>
         </Popup>
-
+        <!--Submit Button Popup Ends Here-->
     </Grid>
 </Window>
