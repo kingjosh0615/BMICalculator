@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml.Serialization;
 using System.Text.RegularExpressions;
 
 namespace BMICalculator
@@ -22,7 +23,7 @@ namespace BMICalculator
     public partial class MainWindow : Window
     {
 
-
+        [XmlRoot("BMICalculator", Namespace = "www.bmicalc.ninja")]
         public class Customer
         {
             public string lastName { get; set; }
@@ -111,7 +112,7 @@ namespace BMICalculator
                 customer1.statusTitle = "Obese";
             }
 
-            //xSubmitPopup.IsOpen = true;
+            xSubmitPopup.IsOpen = true;
             
         }
         private void xSubmitButtonOK_Click(object sender, RoutedEventArgs e)
