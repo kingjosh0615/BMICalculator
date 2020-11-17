@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BMICalculator xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Last_x0020_Name="teryh" First_x0020_Name="dfg" Phone_x0020_Number="3546457457" Height="75" Weight="100" Customer_x0020_BMI="12.497777777777777" Status="Underweight" xmlns="www.bmicalc.ninja">
+  <FilePath>C:\Users\Josh\source\repos\BMICalculator\BMICalculator</FilePath>
+  <FileName>yourBMI.xml</FileName>
+</BMICalculator>

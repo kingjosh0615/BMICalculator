@@ -12,8 +12,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml;
 using System.Xml.Serialization;
 using System.Text.RegularExpressions;
+using System.IO;
+using System.Data;
 
 namespace BMICalculator
 {
@@ -24,22 +27,39 @@ namespace BMICalculator
     {
 
         [XmlRoot("BMICalculator", Namespace = "www.bmicalc.ninja")]
+        
         public class Customer
         {
+            [XmlAttribute("Last Name")]
             public string lastName { get; set; }
+            [XmlAttribute("First Name")]
             public string firstName { get; set; }
+            [XmlAttribute("Phone Number")]
             public string phoneNumber { get; set; }
+            [XmlAttribute("Height")]
             public int heightInches { get; set; }
+            [XmlAttribute("Weight")]
             public int weightLbs { get; set; }
+            [XmlAttribute("Customer BMI")]
             public double custBMI { get; set; }
+            [XmlAttribute("Status")]
             public string statusTitle { get; set; }
 
+            public string FilePath = "C:\\Users\\Josh\\source\\repos\\BMICalculator\\BMICalculator";
+            public string FileName = "yourBMI.xml";
+
+            
         }
+
+        double userBMI;
+        string phoneNumberWithDashes;
+
         public MainWindow()
         {
             InitializeComponent();
 
-
+            OnLoadStats();
+            
         }
         #region Part1 Code
         private void ClearBtn_Click(object sender, RoutedEventArgs e)
@@ -60,14 +80,16 @@ namespace BMICalculator
         private void SubmitBtn_Click(object sender, RoutedEventArgs e)
         {
             Customer customer1 = new Customer();
+            #region Part 2 Code
+
             //double userBMI = (Convert.ToInt32(xWeightLbsBox.Text) / (Convert.ToInt32(xHeightInchesBox.Text) * Convert.ToInt32(xHeightInchesBox.Text)) * 703);
-            
+
             customer1.lastName = Convert.ToString(xLastNameBox.Text);
             customer1.firstName = Convert.ToString(xFirstNameBox.Text);
             customer1.phoneNumber = Convert.ToString(xPhoneBox.Text);
             customer1.heightInches = Convert.ToInt32(xHeightInchesBox.Text);
             customer1.weightLbs = Convert.ToInt32(xWeightLbsBox.Text);
-            double userBMI = (customer1.weightLbs * 703) / Math.Pow(customer1.heightInches, 2);
+            userBMI = (customer1.weightLbs * 703) / Math.Pow(customer1.heightInches, 2);
             customer1.custBMI = userBMI;
             string yourBMIStatus = "NA";
             customer1.statusTitle = yourBMIStatus;
@@ -78,7 +100,7 @@ namespace BMICalculator
             var aStringBuilder = new StringBuilder(customer1.phoneNumber);      
             aStringBuilder.Insert(3, "-");
             aStringBuilder.Insert(7, "-");
-            string phoneNumberWithDashes = aStringBuilder.ToString();
+            phoneNumberWithDashes = aStringBuilder.ToString();
 
             if (heightInchesRemaining == 0)
             {
@@ -111,9 +133,14 @@ namespace BMICalculator
                 xBMIMessage.Text = "According to CDC.gov BMI Calculator you are obese.";
                 customer1.statusTitle = "Obese";
             }
+            #endregion
 
-            xSubmitPopup.IsOpen = true;
-            
+            //xSubmitPopup.IsOpen = true;
+
+            TextWriter writer = new StreamWriter(customer1.FilePath + customer1.FileName);
+            XmlSerializer ser = new XmlSerializer(typeof(Customer));
+            ser.Serialize(writer, customer1);
+            writer.Close();
         }
         private void xSubmitButtonOK_Click(object sender, RoutedEventArgs e)
         {
@@ -123,6 +150,24 @@ namespace BMICalculator
         {
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
+        }
+        private void OnLoadStats()
+        {
+            Customer customer1 = new Customer();
+            XmlSerializer des = new XmlSerializer(typeof(Customer));
+
+            using (XmlReader reader = XmlReader.Create(customer1.FilePath + customer1.FileName))
+            {
+                customer1 = (Customer)des.Deserialize(reader);
+
+                xLastNameBox.Text = customer1.lastName;
+                xFirstNameBox.Text = customer1.firstName;
+                xPhoneBox.Text = customer1.phoneNumber;
+            }
+            DataSet xmlData = new DataSet();
+            xmlData.ReadXml(customer1.FilePath + customer1.FileName, XmlReadMode.Auto);
+            xDataGrid.ItemsSource = xmlData.Tables[0].DefaultView;
+
         }
     }
 }
