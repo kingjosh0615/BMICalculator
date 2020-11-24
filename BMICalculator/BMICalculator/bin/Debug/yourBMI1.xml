@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<BMICalculator xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Last_x0020_Name="Wiles" First_x0020_Name="Josh" Phone_x0020_Number="3450983405" Height="72" Weight="200" Customer_x0020_BMI="27.121913580246915" Status="Overweight" xmlns="www.bmicalc.ninja">
-  <FilePath />
-  <FileName>yourBMI.xml</FileName>
+<BMICalculator xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Last_x0020_Name="Jacobs" First_x0020_Name="John " Phone_x0020_Number="9460498567" Height="72" Weight="200" Customer_x0020_BMI="27.121913580246915" Status="Overweight" xmlns="www.bmicalc.ninja">
+    <FilePath />
+    <FileName>yourBMI.xml</FileName>
 </BMICalculator>

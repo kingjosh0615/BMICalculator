@@ -17,6 +17,7 @@ using System.Xml.Serialization;
 using System.Text.RegularExpressions;
 using System.IO;
 using System.Data;
+using System.Windows.Forms;
 
 namespace BMICalculator
 {
@@ -143,15 +144,19 @@ namespace BMICalculator
 
             //xSubmitPopup.IsOpen = true;
 
-            TextWriter writer = new StreamWriter(tempXmlFilePath + xmlNamingConvention + (numOfXmlsInUse + 1) + xmlEnding);
-            XmlSerializer ser = new XmlSerializer(typeof(Customer));
-            ser.Serialize(writer, customer1);
-            writer.Close();
 
-            using (StreamWriter sw = new StreamWriter("howmanyxmls.txt"))
+
+            using (FileStream fileStream = new FileStream("yourBMI1.xml", FileMode.Create))
+            using (StreamWriter sw = new StreamWriter(fileStream))
+            using (XmlTextWriter xmlWriter = new XmlTextWriter(sw))
             {
-                sw.WriteLine(numOfXmlsInUse + 1);
+                xmlWriter.Formatting = Formatting.Indented;
+                xmlWriter.Indentation = 4;
+                XmlSerializer ser = new XmlSerializer(typeof(Customer));
+                ser.Serialize(xmlWriter, customer1);
+                // ... Write elements
             }
+
         }
         private void xSubmitButtonOK_Click(object sender, RoutedEventArgs e)
         {
@@ -167,31 +172,31 @@ namespace BMICalculator
             Customer customer1 = new Customer();
             XmlSerializer des = new XmlSerializer(typeof(Customer));
 
-            using (StreamReader sr = new StreamReader("howmanyxmls.txt"))
-            {
-                numOfXmlsInUse = Convert.ToInt32(sr.ReadLine());
-            }
+            
 
             countDownDaXmls = numOfXmlsInUse;
-            while (countDownDaXmls != 0)
+            
+
+            using (XmlReader reader = XmlReader.Create("yourBMI1.xml"))
             {
-                tempXmlFilePath =  System.IO.Path.GetDirectoryName(xmlNamingConvention + countDownDaXmls + xmlEnding);
+                customer1 = (Customer)des.Deserialize(reader);
 
-                using (XmlReader reader = XmlReader.Create(tempXmlFilePath + xmlNamingConvention + countDownDaXmls + xmlEnding))
-                {
-                    customer1 = (Customer)des.Deserialize(reader);
-
-                    xLastNameBox.Text = customer1.lastName;
-                    xFirstNameBox.Text = customer1.firstName;
-                    xPhoneBox.Text = customer1.phoneNumber;
-                }
-                DataSet xmlData = new DataSet();
-                xmlData.ReadXml(tempXmlFilePath + xmlNamingConvention + countDownDaXmls + xmlEnding, XmlReadMode.Auto);
-                xDataGrid.ItemsSource = xmlData.Tables[0].DefaultView;
-
-                whichTableBox = whichTableBox + 1;
-                countDownDaXmls--;
+                xLastNameBox.Text = customer1.lastName;
+                xFirstNameBox.Text = customer1.firstName;
+                xPhoneBox.Text = customer1.phoneNumber;
             }
+
+            
+
+            DataSet xmlData = new DataSet();
+            xmlData.ReadXml("yourBMI1.xml");
+            xDataGrid.DataSource = xmlData.Tables[0];
+            
+            
+
+            whichTableBox = whichTableBox + 1;
+            countDownDaXmls--;
+            
             
 
             
