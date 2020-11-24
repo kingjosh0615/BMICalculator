@@ -45,7 +45,7 @@ namespace BMICalculator
             [XmlAttribute("Status")]
             public string statusTitle { get; set; }
 
-            public string FilePath = "C:\\Users\\Josh\\source\\repos\\BMICalculator\\BMICalculator";
+            public string FilePath = System.IO.Path.GetDirectoryName("yourBMI.xml");
             public string FileName = "yourBMI.xml";
 
             
@@ -53,6 +53,12 @@ namespace BMICalculator
 
         double userBMI;
         string phoneNumberWithDashes;
+        int numOfXmlsInUse;
+        int countDownDaXmls;
+        string xmlNamingConvention = "yourBMI";
+        string xmlEnding = ".xml";
+        string tempXmlFilePath;
+        int whichTableBox = 0;
 
         public MainWindow()
         {
@@ -137,10 +143,15 @@ namespace BMICalculator
 
             //xSubmitPopup.IsOpen = true;
 
-            TextWriter writer = new StreamWriter(customer1.FilePath + customer1.FileName);
+            TextWriter writer = new StreamWriter(tempXmlFilePath + xmlNamingConvention + (numOfXmlsInUse + 1) + xmlEnding);
             XmlSerializer ser = new XmlSerializer(typeof(Customer));
             ser.Serialize(writer, customer1);
             writer.Close();
+
+            using (StreamWriter sw = new StreamWriter("howmanyxmls.txt"))
+            {
+                sw.WriteLine(numOfXmlsInUse + 1);
+            }
         }
         private void xSubmitButtonOK_Click(object sender, RoutedEventArgs e)
         {
@@ -156,17 +167,34 @@ namespace BMICalculator
             Customer customer1 = new Customer();
             XmlSerializer des = new XmlSerializer(typeof(Customer));
 
-            using (XmlReader reader = XmlReader.Create(customer1.FilePath + customer1.FileName))
+            using (StreamReader sr = new StreamReader("howmanyxmls.txt"))
             {
-                customer1 = (Customer)des.Deserialize(reader);
-
-                xLastNameBox.Text = customer1.lastName;
-                xFirstNameBox.Text = customer1.firstName;
-                xPhoneBox.Text = customer1.phoneNumber;
+                numOfXmlsInUse = Convert.ToInt32(sr.ReadLine());
             }
-            DataSet xmlData = new DataSet();
-            xmlData.ReadXml(customer1.FilePath + customer1.FileName, XmlReadMode.Auto);
-            xDataGrid.ItemsSource = xmlData.Tables[0].DefaultView;
+
+            countDownDaXmls = numOfXmlsInUse;
+            while (countDownDaXmls != 0)
+            {
+                tempXmlFilePath =  System.IO.Path.GetDirectoryName(xmlNamingConvention + countDownDaXmls + xmlEnding);
+
+                using (XmlReader reader = XmlReader.Create(tempXmlFilePath + xmlNamingConvention + countDownDaXmls + xmlEnding))
+                {
+                    customer1 = (Customer)des.Deserialize(reader);
+
+                    xLastNameBox.Text = customer1.lastName;
+                    xFirstNameBox.Text = customer1.firstName;
+                    xPhoneBox.Text = customer1.phoneNumber;
+                }
+                DataSet xmlData = new DataSet();
+                xmlData.ReadXml(tempXmlFilePath + xmlNamingConvention + countDownDaXmls + xmlEnding, XmlReadMode.Auto);
+                xDataGrid.ItemsSource = xmlData.Tables[0].DefaultView;
+
+                whichTableBox = whichTableBox + 1;
+                countDownDaXmls--;
+            }
+            
+
+            
 
         }
     }

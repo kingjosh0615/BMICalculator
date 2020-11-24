@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BMICalculator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="800">
+        Title="MainWindow" Height="700" Width="1200">
     
     <Grid>
         <!--Eight Column Definitions-->
@@ -62,7 +62,7 @@
         <Button x:Name="ExitBtn" Content="Exit" Grid.Row="6" Grid.Column="6" Width="80" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" Click="ExitBtn_Click" BorderThickness="2"/>
 
         <!--Datagrid-->
-        <DataGrid x:Name="xDataGrid" AutoGenerateColumns="True" Grid.Column="1" HorizontalAlignment="Left" Height="257" Grid.Row="7" VerticalAlignment="Top" Width="722" Grid.ColumnSpan="6"/>
+        <DataGrid x:Name="xDataGrid" AutoGenerateColumns="True" Grid.Column="1" HorizontalAlignment="Left" Height="257" Grid.Row="7" VerticalAlignment="Top" Width="922" Grid.ColumnSpan="6"/>
         
         <!--Submit Button Popup Starts Here-->
         <Popup Margin="10,10,0,13" Name="xSubmitPopup" HorizontalAlignment="Left" VerticalAlignment="Top" Width="400" Height="250" IsOpen="False" AllowsTransparency="True" Grid.RowSpan="2">
